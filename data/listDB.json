@@ -1,0 +1,24 @@
+[
+    {
+    "img": "https://picsum.photos/200/200",
+    "id": "a1234",
+    "name": "item1",
+    "price": 425,
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis repellat dignissimos ratione, explicabo natus nemo rem labore obcaecati architecto cupiditate numquam excepturi eos velit molestias a autem veritatis laborum dolor."
+  },
+  {
+    "img": "https://picsum.photos/200/200",
+    "id": "b2234",
+    "name": "item2",
+    "price": 550,
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis repellat dignissimos ratione, explicabo natus nemo rem labore obcaecati architecto cupiditate numquam excepturi eos velit molestias a autem veritatis laborum dolor."
+  },
+  {
+    "img": "https://picsum.photos/200/200",
+    "id": "c3234",
+    "name": "item3",
+    "price": 725,
+    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis repellat dignissimos ratione, explicabo natus nemo rem labore obcaecati architecto cupiditate numquam excepturi eos velit molestias a autem veritatis laborum dolor."
+  
+  }
+]
