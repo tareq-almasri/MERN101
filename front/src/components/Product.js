@@ -30,7 +30,7 @@ class Product extends Component {
         <p><strong> {this.state.productObj.name} </strong></p>
         <p><strong> $ {this.state.productObj.price} </strong></p>
         <p> {this.state.productObj.description} </p>
-        <button onClick={this.addToCart.bind(this)} > Add to Cart </button>
+        <button onClick={this.addToCart} > Add to Cart </button>
       </div>
     );
   }
