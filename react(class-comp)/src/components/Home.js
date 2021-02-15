@@ -9,7 +9,7 @@ class Home extends Component {
   componentDidMount() {
     fetch("/product-list/")
       .then(res => res.json())
-      .then(arr => this.setState({ arr }));
+      .then(arr => this.setState({ arr: arr }));
   }
 
   render() {
