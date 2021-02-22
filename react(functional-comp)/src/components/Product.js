@@ -4,16 +4,18 @@ export default function Product(props) {
   const [productObj, setProductObj] = useState({});
 
   useEffect(() => {
-    const { id } = props.match.params;
-    fetch(`/product-view/${id}`)
-      .then((res) => res.json())
-      .then((data) => setProductObj(data));
+    if (props.match.params) {
+      const { id } = props.match.params;
+      fetch(`http://localhost:5000/product-view/${id}`)
+        .then((res) => res.json())
+        .then((data) => setProductObj(data));
+    }
   });
 
   const addToCart = () => {
     const { id } = props.match.params;
 
-    fetch(`/shopping-cart/${id}`, {
+    fetch(`http://localhost:5000/shopping-cart/${id}`, {
       method: "POST",
     })
       .then((res) => res.json())
