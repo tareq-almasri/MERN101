@@ -6,20 +6,25 @@ class Cart extends Component {
   };
 
   componentDidMount() {
-    fetch("/shopping-cart")
+    fetch("http://localhost:5000/shopping-cart")
       .then(res => res.json())
-      .then(arr => this.setState({ arr }));
+      .then(data => this.setState({ arr: data }));
   }
 
  
     updateQuantity = (id, event) => {
-      fetch(`/shopping-cart/${id}`, {
+      fetch(`http://localhost:5000/shopping-cart/${id}`, {
         method: "PATCH",
         body: JSON.stringify({ quantity: event.target.value }),
         headers: { "Content-Type": "application/json" }
       })
         .then(response => response.json())
-        .then(arr => this.setState({ arr }));
+        .then(data => {
+          console.log( data );
+          fetch("http://localhost:5000/shopping-cart")
+          .then(res => res.json())
+          .then(data => this.setState({ arr: data }));
+        });
     };
   
     totalPrice=()=>{
@@ -27,11 +32,16 @@ class Cart extends Component {
     }
 
   deleteFromCart = (id) => {
-    fetch(`/shopping-cart/${id}`, {
+    fetch(`http://localhost:5000/shopping-cart/${id}`, {
       method: "DELETE"
     })
       .then(res => res.json())
-      .then(arr => this.setState({ arr }));
+      .then(data => {
+        console.log( data );
+        fetch("http://localhost:5000/shopping-cart")
+        .then(res => res.json())
+        .then(data => this.setState({ arr: data }));
+      });;
   };
 
   render() {
@@ -39,21 +49,21 @@ class Cart extends Component {
       <Fragment>
         {this.state.arr.map(x => (
           <div
-            key={x.id}
+            key={x._id}
             style={{ display: "flex", justifyContent: "space-around" }}
           >
-            <img src={x.img} style={{ width: "40px" }} alt="" />
+            <img src={x.img} style={{ width: "40px" }} alt="some pic" />
             <p> {x.name} </p>
             <p> $ {x.price} </p>
 
             <input
-              onChange={this.updateQuantity.bind(this, x.id)}
+              onChange={this.updateQuantity.bind(this, x._id)}
               type="number"
               min="1"
               value={x.quantity}
             />
 
-            <button onClick={this.deleteFromCart.bind(this, x.id)}>
+            <button onClick={this.deleteFromCart.bind(this, x._id)}>
                Delete
             </button>
           </div>

@@ -4,13 +4,11 @@ export default function Product(props) {
   const [productObj, setProductObj] = useState({});
 
   useEffect(() => {
-    if (props.match.params) {
       const { id } = props.match.params;
       fetch(`http://localhost:5000/product-view/${id}`)
         .then((res) => res.json())
         .then((data) => setProductObj(data));
-    }
-  });
+  },[]);
 
   const addToCart = () => {
     const { id } = props.match.params;
@@ -23,7 +21,8 @@ export default function Product(props) {
   };
 
   return (
-    <div>
+    <div style={{display: "flex", justifyContent: "center", alignItems: "center", height: "100%"}}>
+    <div style={{textAlign: "center"}}>
       <img src={productObj.img} alt="some pic" />
       <p>
         <strong> {productObj.name} </strong>
@@ -34,6 +33,7 @@ export default function Product(props) {
       <p> {productObj.description} </p>
 
       <button onClick={addToCart}> Add to Cart </button>
+    </div>
     </div>
   );
 }

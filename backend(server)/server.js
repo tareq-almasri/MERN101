@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const app = express();
 const mongoose = require("mongoose");
 const faker = require("faker");
@@ -6,7 +7,7 @@ const { ProductList } = require("./Models/product.model");
 
 // CONNECT TO MONGODB
 mongoose.connect(
-  "mongodb+srv://alef:hello123@cluster0-2yq8x.mongodb.net/Onigiri?retryWrites=true&w=majority",
+  process.env.MONGODB_URI,
   {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -27,7 +28,7 @@ mongoose.connect(
 //     for(let i=0; i<4; i++){
 //       ProductList.create({
 //        img: "https://picsum.photos/200/200",
-//         name: faker.name.title(),
+//         name: faker.commerce.product(),
 //         price: faker.commerce.price(),
 //         description: faker.lorem.sentence(),
 //         quantity: 0

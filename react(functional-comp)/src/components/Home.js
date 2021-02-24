@@ -8,10 +8,10 @@ export default function Home() {
     fetch("http://localhost:5000/product-list/")
       .then((res) => res.json())
       .then((data) => setArr(data));
-  });
+  },[]);
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-around" }}>
+    <div style={{ display: "flex", justifyContent: "space-around", alignItems: "center", height: "100%" }}>
       {arr.map((x) => (
         <div key={x._id}>
           <img src={x.img} alt="some pic" />

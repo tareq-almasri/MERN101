@@ -7,7 +7,7 @@ export default function Cart(props) {
     fetch("http://localhost:5000/shopping-cart")
       .then((res) => res.json())
       .then((data) => setArr(data));
-  });
+  },[]);
 
   const updateQuantity = (id, quant) => {
     fetch(`http://localhost:5000/shopping-cart/${id}`, {

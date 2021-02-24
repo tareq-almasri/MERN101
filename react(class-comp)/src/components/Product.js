@@ -7,7 +7,7 @@ class Product extends Component {
 
   componentDidMount(){
       const {id}=this.props.match.params
-      fetch(`/product-view/${id}`)
+      fetch(`http://localhost:5000/product-view/${id}`)
         .then(res => res.json())
         .then(productObj => this.setState({ productObj }));
   }
@@ -16,7 +16,7 @@ class Product extends Component {
 
       const { id } = this.props.match.params;
 
-      fetch(`/shopping-cart/${id}`, {
+      fetch(`http://localhost:5000/shopping-cart/${id}`, {
         method: "POST"
       })
         .then(response => response.json())
@@ -25,12 +25,14 @@ class Product extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{display: "flex", justifyContent: "center", alignItems: "center", height: "100%"}}>
+        <div style={{textAlign: "center"}}>
         <img src={this.state.productObj.img} />
         <p><strong> {this.state.productObj.name} </strong></p>
         <p><strong> $ {this.state.productObj.price} </strong></p>
         <p> {this.state.productObj.description} </p>
         <button onClick={this.addToCart} > Add to Cart </button>
+      </div>
       </div>
     );
   }
