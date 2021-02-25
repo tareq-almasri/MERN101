@@ -23,7 +23,7 @@ mongoose.connect(
   }
 );
 
-// to create some documents in collection products in our database (only run it once)
+// to create some documents in collection products in our database (uncomment the next part and only run it once then comment it out again)
 // mongoose.connection.once('open', () => {
 //     for(let i=0; i<4; i++){
 //       ProductList.create({
@@ -82,7 +82,7 @@ app.post("/shopping-cart/:id", (req, res) => {
   ProductList.findById(req.params.id).then((product) => {
     product.quantity += 1;
     product.save();
-    res.json('added to cart');
+    res.json('added to cart');  //you can also use res.send()
   })
 });
 
